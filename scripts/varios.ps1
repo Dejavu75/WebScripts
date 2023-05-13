@@ -1,20 +1,20 @@
 write-host -back Black -fore Black .
 write-host -back Black -fore Instalando TotalCommander
-IRM soporte.solinges.com.ar/total |iex
+Invoke-RestMethod soporte.solinges.com.ar/total | Invoke-Expression
 
 write-host -back Black -fore Black .
 write-host -back Black -fore Instalando Office
-IRM soporte.solinges.com.ar/office64 | iex      
+Invoke-RestMethod soporte.solinges.com.ar/office64 | Invoke-Expression
 
 write-host -back Black -fore Black .
 write-host -back Black -fore Instalando Chrome
-IRM soporte.solinges.com.ar/chrome |iex
+Invoke-RestMethod soporte.solinges.com.ar/chrome | Invoke-Expression
 
 write-host -back Black -fore Black .
 write-host -back Black -fore Instalando AutoInst
-IRM soporte.solinges.com.ar/autoinst |iex
+Invoke-RestMethod soporte.solinges.com.ar/autoinst | Invoke-Expression
 
 write-host -back Black -fore Black .
 write-host -back Black -fore Activando Office
-IRM soporte.solinges.com.ar/activar |iex
+Invoke-RestMethod soporte.solinges.com.ar/activar | Invoke-Expression
 
