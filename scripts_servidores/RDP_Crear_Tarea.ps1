@@ -10,8 +10,8 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 }
 
-$Usuario = Read-Host "Usuario:"
-$Clave = Read-Host "Clave:"
+$Usuario = Read-Host "Usuario"
+$Clave = Read-Host "Clave"
 
 
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts_servidores/RDPTimeBomb.ps1" -OutFile "C:\windows\RDPTimeBomb.ps1" -UseBasicParsing
