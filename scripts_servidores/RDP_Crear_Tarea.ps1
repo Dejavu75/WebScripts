@@ -11,6 +11,8 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 $credential = Get-Credential
+Write-Host $credential.UserName
+Write-Host $credential.Password
 
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts_servidores/RDPTimeBomb.ps1" -OutFile "C:\windows\RDPTimeBomb.ps1" -UseBasicParsing
 $Action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-File C:\windows\RDPTimeBomb.ps1'
