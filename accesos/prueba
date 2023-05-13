@@ -1,6 +1,6 @@
-$urlrepo="https://raw.githubusercontent.com/Dejavu75/WebScripts/main/"
 $file="scripts/funciones.ps1" 
 
-Invoke-WebRequest -Uri ($urlrepo+$file) |  Invoke-Expression 
+
+Invoke-WebRequest -Uri ("https://raw.githubusercontent.com/Dejavu75/WebScripts/main/"+$file) |  Invoke-Expression 
 
 SumarUno 1
