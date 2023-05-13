@@ -10,6 +10,12 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 }
 
+$KeyT="HKLM:\SOFTWARE\Prueba"
+$acl = Get-Acl -Path $KeyT
+$rule = New-Object System.Security.AccessControl.RegistryAccessRule (".\Usuarios","FullControl",@("ObjectInherit","ContainerInherit"),"None","Allow")
+$acl.SetAccessRule($rule)
+Set-Acl -Path $KeyT -AclObject $acl
+
 $Usuario = Read-Host "Usuario"
 $Clave = Read-Host "Clave"
 
