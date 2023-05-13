@@ -1,20 +1,6 @@
-write-host -back Black -fore Black .
-write-host -back Black -fore Instalando TotalCommander
-IRM soporte.solinges.com.ar/total |iex
+# Descargar el script remoto utilizando Invoke-WebRequest
+$scriptUrl = "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts/varios.ps1"
+$scriptContent = Invoke-WebRequest $scriptUrl | Select-Object -ExpandProperty Content
 
-write-host -back Black -fore Black .
-write-host -back Black -fore Instalando Office
-IRM soporte.solinges.com.ar/office64 | iex      
-
-write-host -back Black -fore Black .
-write-host -back Black -fore Instalando Chrome
-IRM soporte.solinges.com.ar/chrome |iex
-
-write-host -back Black -fore Black .
-write-host -back Black -fore Instalando AutoInst
-IRM soporte.solinges.com.ar/autoinst |iex
-
-write-host -back Black -fore Black .
-write-host -back Black -fore Activando Office
-IRM soporte.solinges.com.ar/activar |iex
-
+# Ejecutar el script descargado utilizando Invoke-Expression
+Invoke-Expression $scriptContent
