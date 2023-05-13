@@ -1,6 +1,3 @@
-# Descargar el script remoto utilizando Invoke-WebRequest
-$scriptUrl = "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/probar.ps1"
-$scriptContent = Invoke-WebRequest $scriptUrl | Select-Object -ExpandProperty Content
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts/funciones.ps1" |  Invoke-Expression 
 
-# Ejecutar el script descargado utilizando Invoke-Expression
-Invoke-Expression $scriptContent
+SumarUno 1
