@@ -10,7 +10,6 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 }
 
-$credential = Get-Credential
 $Usuario = Read-Host "Usuario:"
 $Clave = Read-Host "Clave:"
 
