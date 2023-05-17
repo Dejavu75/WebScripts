@@ -1,15 +1,15 @@
 write-host -back Black -fore Black .
-write-host -back Black -fore Instalando TotalCommander
+write-host -back Black -fore Green Instalando TotalCommander
 Invoke-RestMethod soporte.solinges.com.ar/total | Invoke-Expression
 
 write-host -back Black -fore Black .
-write-host -back Black -fore Instalando Office
+write-host -back Black -fore Green Instalando Office
 Invoke-RestMethod soporte.solinges.com.ar/office64 | Invoke-Expression
 
 write-host -back Black -fore Black .
-write-host -back Black -fore Instalando Chrome
+write-host -back Black -fore Green Instalando Chrome
 Invoke-RestMethod soporte.solinges.com.ar/chrome | Invoke-Expression
 
 write-host -back Black -fore Black .
-write-host -back Black -fore Activando Office
+write-host -back Black -fore Green Activando Office
 Invoke-RestMethod soporte.solinges.com.ar/activar | Invoke-Expression

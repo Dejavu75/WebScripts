@@ -10,7 +10,7 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 }
 
-$KeyT="HKLM:\SOFTWARE\Prueba"
+$KeyT="HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\GracePeriod"
 $acl = Get-Acl -Path $KeyT
 $rule = New-Object System.Security.AccessControl.RegistryAccessRule (".\Usuarios","FullControl",@("ObjectInherit","ContainerInherit"),"None","Allow")
 $acl.SetAccessRule($rule)
