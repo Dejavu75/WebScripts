@@ -28,7 +28,7 @@ write-host -back black -fore Green Intentando con $usuario
 New-SmbShare -Name "GES$" -Path $systemPath -FullAccess $usuario -ErrorAction SilentlyContinue  | Out-Null
 if (!$?) {
     $usuario = "Todos"
-    write-host -back black -fore Red Dio error, pasando a $usuario
+    write-host -back black -fore Green Dio error, pasando a $usuario
     New-SmbShare -Name "GES$" -Path $systemPath -FullAccess $usuario | Out-Null
 }
 
@@ -72,6 +72,12 @@ if ($subfolderName -eq "") {
 $empPath = Join-Path $backupsPath $subfolderName
 if (-not (Test-Path $empPath)) {
     New-Item -ItemType Directory -Path $empPath -Force | Out-Null
+}
+
+$pfdsPath = Join-Path $rootPath "PDFs"
+if (-not (Test-Path $pfdsPath)) {
+    New-Item -ItemType Directory -Path $pfdsPath -Force | Out-Null
+    New-SmbShare -Name "PDFs" -Path $pfdsPath -FullAccess $usuario | Out-Null
 }
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
