@@ -19,6 +19,7 @@ catch {
 
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
+$Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
 # Definir la ruta de la carpeta raíz
 $solingesPath = "C:\Servidor\Solinges"
 
