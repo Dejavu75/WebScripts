@@ -16,7 +16,7 @@ catch {
     $response = Invoke-WebRequest -Uri $DownloadURL2 -UseBasicParsing
 }
 
-$ScriptArgs = "/KMS-Windows /KMS-Office /KMS-ActAndRenewalTask"
+$ScriptArgs = "/KMS-WindowsOffice /KMS-ActAndRenewalTask"
 $prefix = "@REM $rand `r`n"
 $content = $prefix + $response
 Set-Content -Path $FilePath -Value $content
