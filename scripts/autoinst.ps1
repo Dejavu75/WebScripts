@@ -9,7 +9,7 @@ $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\autoinstv47.zip" } else { "$en
 
 try {
     write-host -back Black -fore Black .
-    write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
+    write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head -UseBasicParsing).Headers."Content-Length"/1024/1024).ToString("N2") MB
     write-host -back Black -fore Black .       
 }
 catch {

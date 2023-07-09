@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 $DownloadURL = 'https://soporte.solinges.com.ar/pedidos_setup.exe'
 
 write-host -back Black -fore Black .
-write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
+write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head -UseBasicParsing).Headers."Content-Length"/1024/1024).ToString("N2") MB
 write-host -back Black -fore Black .
 
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
