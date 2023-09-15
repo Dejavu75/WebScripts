@@ -47,8 +47,8 @@ $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 # Ruta de destino
 $destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Leaf)
 
-Copy-Item -Path $destino -Destination $destino
-Rename-Item -Path $FilePath -NewName "cobian_original.lst"
+Copy-Item -Path $FilePath -Destination $destino
+Rename-Item -Path $destino -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
 #write-host $contenido
