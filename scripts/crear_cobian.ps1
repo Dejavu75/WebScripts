@@ -48,7 +48,7 @@ Copy-Item -Path $FilePath -Destination $destino
 Rename-Item -Path $FilePath -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
-write-host $contenido
+#write-host $contenido
 $contenido | Set-Content $FilePath
 
 # Ruta de destino
