@@ -44,18 +44,19 @@ $contenido = $contenido -replace $DefaDiario, $DiarioPath
 $contenido = $contenido -replace $DefaSystem, $systemPath
 $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 
-Copy-Item -Path $FilePath -Destination $destino
+# Ruta de destino
+$destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Leaf)
+
+Copy-Item -Path $destino -Destination $destino
 Rename-Item -Path $FilePath -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
 #write-host $contenido
 $contenido | Set-Content $FilePath
 
-# Ruta de destino
-$destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Leaf)
 
 # Copiar el archivo al destino
 Copy-Item -Path $FilePath -Destination $destino
-Rename-Item -Path $FilePath -NewName "cobian_$Emp.lst"
+Rename-Item -Path $destino -NewName "cobian_$Emp.lst"
 
 Write-Host "El archivo se ha creado..."
