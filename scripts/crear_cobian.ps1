@@ -42,7 +42,7 @@ $contenido = Get-Content $FilePath
 
 $contenido = $contenido -replace $DefaDiario, $DiarioPath
 $contenido = $contenido -replace $DefaSystem, $systemPath
-$contenido = $contenido -replace $DefaDeposito, $DepositoPath
+$contenido = $contenido -replace $DefaDeposito, $DepositoPath 
 
 # Ruta de destino
 $destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Leaf)
