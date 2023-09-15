@@ -52,7 +52,7 @@ Rename-Item -Path $destino -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
 #write-host $contenido
-$contenido | Set-Content $FilePath
+$contenido | Set-Content $FilePath -Encoding UTF16 
 
 
 # Copiar el archivo al destino
