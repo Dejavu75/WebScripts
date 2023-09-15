@@ -19,6 +19,8 @@ catch {
 
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
+Copy-Item -Path $FilePath -Destination $destino
+
 $DefaDiario="%DefaDiario%"      # "c:\Sistema\Backups\AVI"
 $DefaSystem="%DefaSystem%"      # "c:\Sistema\System"
 $DefaDeposito="%DefaDeposito%"  # "c:\Sistema\Backups\GES"
@@ -42,6 +44,8 @@ $contenido = $contenido -replace $DefaDiario, $DiarioPath
 $contenido = $contenido -replace $DefaSystem, $systemPath
 $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 
+Copy-Item -Path $FilePath -Destination $destino
+Rename-Item -Path $FilePath -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
 write-host $contenido
@@ -52,5 +56,6 @@ $destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Lea
 
 # Copiar el archivo al destino
 Copy-Item -Path $FilePath -Destination $destino
+Rename-Item -Path $FilePath -NewName "cobian_$Emp.lst"
 
 Write-Host "El archivo se ha creado..."
