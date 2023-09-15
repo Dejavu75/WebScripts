@@ -19,6 +19,11 @@ catch {
 
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
+$DefaDiario="%DefaDiario%"      # "c:\Sistema\Backups\AVI"
+$DefaSystem="%DefaSystem%"      # "c:\Sistema\System"
+$DefaDeposito="%DefaDeposito%"  # "c:\Sistema\Backups\GES"
+
+
 $Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
 # Definir la ruta de la carpeta raíz
 $solingesPath = "C:\Servidor\Solinges"
@@ -33,9 +38,9 @@ $DiarioPath = Join-Path $BackupPath $Emp
 # Lee el contenido del archivo
 $contenido = Get-Content $FilePath
 
-$contenido = $contenido -replace "c:\Sistema\Backups\AVI", $DiarioPath
-$contenido = $contenido -replace "c:\Sistema\System", $systemPath
-$contenido = $contenido -replace "c:\Sistema\Backups\GES", $DepositoPath
+$contenido = $contenido -replace $DefaDiario, $DiarioPath
+$contenido = $contenido -replace $DefaSystem, $systemPath
+$contenido = $contenido -replace $DefaDeposito, $DepositoPath
 
 
 # Guarda el contenido modificado en el archivo
