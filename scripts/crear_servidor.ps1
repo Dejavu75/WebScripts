@@ -91,3 +91,13 @@ write-host -back Black -fore Black .
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 Expand-Archive -Path $FilePath -DestinationPath $supportPath
+
+$DownloadURL = 'https://soporte.solinges.com.ar/cobian.zip'
+$FilePath = ($supportPath+"\cobian.zip")
+
+write-host -back Black -fore Black .
+write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
+write-host -back Black -fore Black .
+Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
+
+Expand-Archive -Path $FilePath -DestinationPath $supportPath
