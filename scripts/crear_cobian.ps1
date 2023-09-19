@@ -27,12 +27,29 @@ $DefaDeposito="%DefaDeposito%"  # "c:\Sistema\Backups\GES"
 
 
 $Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
+if ($Emp -eq "") {
+    $Emp = "EMP"
+}
+
 # Definir la ruta de la carpeta raíz
-$solingesPath = "C:\Servidor\Solinges"
+$solingesPath = Read-Host "Ingrese el path base (C:\Servidor)"
+if ($solingesPath -eq "") {
+    $solingesPath = "C:\Servidor\Solinges"
+}
+
 
 # Definir la ruta de la carpeta System
 $systemPath = Join-Path $solingesPath "System"
+$systemPath = Read-Host "Ingrese el system ("+$systemPath +")"
+if ($systemPath -eq "") {
+    $systemPath = Join-Path $solingesPath "System"
+}
+
 $BackupPath = Join-Path $solingesPath "Backup"
+$BackupPath = Read-Host "Ingrese el path del backup ("+$BackupPath +")"
+if ($BackupPath -eq "") {
+    $BackupPath = Join-Path $solingesPath "Backup"
+}
 
 $DepositoPath = Join-Path $BackupPath "GES"
 $DiarioPath = Join-Path $BackupPath $Emp 

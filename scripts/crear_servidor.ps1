@@ -3,7 +3,11 @@
 $usuario = "Everyone"
 
 # Definir la ruta de la carpeta raíz
-$rootPath = "C:\Servidor"
+$rootPath = Read-Host "Ingrese el path base (C:\Servidor)"
+if ($rootPath -eq "") {
+    $rootPath = "C:\Servidor"
+}
+
 
 # Definir la ruta de la carpeta System
 $solingesPath = Join-Path $rootPath "Solinges"
