@@ -32,7 +32,7 @@ if ($Emp -eq "") {
 }
 
 # Definir la ruta de la carpeta raíz
-$solingesPath = Read-Host "Ingrese el path base (C:\Servidor)"
+$solingesPath = Read-Host "Ingrese el path base (C:\Servidor\Solinges)"
 if ($solingesPath -eq "") {
     $solingesPath = "C:\Servidor\Solinges"
 }
@@ -40,13 +40,13 @@ if ($solingesPath -eq "") {
 
 # Definir la ruta de la carpeta System
 $systemPath = Join-Path $solingesPath "System"
-$systemPath = Read-Host "Ingrese el system ("+$systemPath +")"
+$systemPath = Read-Host "Ingrese el system ($systemPath)"
 if ($systemPath -eq "") {
     $systemPath = Join-Path $solingesPath "System"
 }
 
 $BackupPath = Join-Path $solingesPath "Backup"
-$BackupPath = Read-Host "Ingrese el path del backup ("+$BackupPath +")"
+$BackupPath = Read-Host "Ingrese el path del backup ( $BackupPath )"
 if ($BackupPath -eq "") {
     $BackupPath = Join-Path $solingesPath "Backup"
 }
