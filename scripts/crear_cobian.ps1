@@ -46,7 +46,7 @@ if ($systemPath -eq "") {
 }
 
 $BackupPath = Join-Path $solingesPath "Backup"
-$BackupPath = Read-Host "Ingrese el path del backup ( $BackupPath )"
+$BackupPath = Read-Host "Ingrese el path del backup ($BackupPath)"
 if ($BackupPath -eq "") {
     $BackupPath = Join-Path $solingesPath "Backup"
 }
