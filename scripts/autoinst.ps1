@@ -20,7 +20,7 @@ Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 Expand-Archive -Path $FilePath -DestinationPath C:\Soporte
 
-Start-Process C:\Soporte\AutoInstv47\Instalar.bat -Wait
+Start-Process C:\Soporte\AutoInstv48\Instalar.bat -Wait
 write-host -back Black -fore Black .
 write-host -back Black -fore Green Script terminado... 
 write-host -back Black -fore Black .
