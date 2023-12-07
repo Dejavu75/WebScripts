@@ -86,8 +86,8 @@ if (-not (Test-Path $pfdsPath)) {
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
-$DownloadURL = 'https://soporte.solinges.com.ar/autoinstv47.zip'
-$FilePath = ($supportPath+"\autoinstv47.zip")
+$DownloadURL = 'https://soporte.solinges.com.ar/autoinstv48.zip'
+$FilePath = ($supportPath+"\autoinstv48.zip")
 
 write-host -back Black -fore Black .
 write-host -back black -fore Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
