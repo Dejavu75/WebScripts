@@ -45,10 +45,10 @@ if ($systemPath -eq "") {
     $systemPath = Join-Path $solingesPath "System"
 }
 
-$BackupPath = Join-Path $solingesPath "Backup"
+$BackupPath = Join-Path $solingesPath "Backups"
 $BackupPath = Read-Host "Ingrese el path del backup ($BackupPath)"
 if ($BackupPath -eq "") {
-    $BackupPath = Join-Path $solingesPath "Backup"
+    $BackupPath = Join-Path $solingesPath "Backups"
 }
 
 $DepositoPath = Join-Path $BackupPath "GES"
