@@ -106,5 +106,6 @@ Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 Expand-Archive -Path $FilePath -DestinationPath $supportPath
 
-Set-Location $rootPath
-Start-Process $supportPath+"\AutoInstv48\Instalar.bat" -Wait
+Set-Location $rootPat
+$AutoInst = Join-Path $rootPath "AutoInstv48\Instalar.bat"
+Start-Process $AutoInst -Wait
