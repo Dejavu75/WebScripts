@@ -105,3 +105,6 @@ write-host -back Black -fore Black .
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 Expand-Archive -Path $FilePath -DestinationPath $supportPath
+
+Set-Location $rootPath
+Start-Process $supportPath+"\AutoInstv48\Instalar.bat" -Wait
