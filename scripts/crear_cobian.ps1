@@ -1,12 +1,13 @@
 $ErrorActionPreference = "Stop"
 # Enable TLSv1.2 for compatibility with older clients
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-
+Write-Host 1
 $DownloadURL = 'https://soporte.solinges.com.ar/cobian.lst'
-
+Write-Host 2
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
+Write-Host 3
 $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\cobian.lst" } else { "$env:TEMP\cobian.lst" }
-
+Write-Host 4
 try {
     Write-Host -BackgroundColor Black -ForegroundColor Black .
     Write-Host -BackgroundColor Black -ForegroundColor Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
@@ -15,7 +16,7 @@ try {
 catch {
     <#Do this if a terminating exception happens#>
 }
-
+Write-Host 5
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 # Define the directories to search for version.dbf
