@@ -72,7 +72,7 @@ $contenido = $contenido -replace $DefaSystem, $systemPath
 $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 
 # Ruta de destino
-$destino = Join-Path -Path $PWD.Path -ChildPath (Split-Path -Path $FilePath -Leaf)
+$destino = Join-Path -Path $solingesPath -ChildPath (Split-Path -Path $FilePath -Leaf)
 
 if (Test-Path $destino) {
     Rename-Item -Path $destino -NewName ($destino + ".bak")
