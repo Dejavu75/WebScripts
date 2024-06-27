@@ -39,7 +39,10 @@ foreach ($dir in $searchDirectories) {
 }
 
 if ($found) {
-    Write-Host "Se ha encontrado $systemPath2"
+    write-host -back Black -fore Black .
+    write-host -back black -fore Green "Se ha encontrado $systemPath2"
+    write-host -back Black -fore Black .      
+    
     $solingesPath2 = Split-Path $systemPath2 -Parent
 } else {
     $solingesPath2 = "C:\Servidor\Solinges"
@@ -118,10 +121,15 @@ if (Test-Path $modificadoDestino) {
 Copy-Item -Path $FilePath -Destination $destino -Force
 Rename-Item -Path $destino -NewName "cobian_$Emp.lst"
 
+
+
+write-host -back Black -fore Black .
 Write-Host "Resumen de directorios seteados:"
 Write-Host "Ruta del sistema: $systemPath"
 Write-Host "Ruta de backup: $BackupPath"
 Write-Host "Ruta de deposito: $DepositoPath"
 Write-Host "Ruta de backup diario: $DiarioPath"
+write-host -back Black -fore Black .      
 
-Write-Host "El archivo se ha creado..."
+# Cambiar el directorio al path de $destino
+Set-Location -Path $destino
