@@ -20,6 +20,11 @@ $searchDirectories = @(
     'c:\Servidor\Sistema\2000\system',
     'c:\Sistema\system',
     'c:\Sistema\2000\system'
+    'd:\Servidor\solinges\system',
+    'd:\Servidor\Sistema\system',
+    'd:\Servidor\Sistema\2000\system',
+    'd:\Sistema\system',
+    'd:\Sistema\2000\system'    
 )
 
 $found = $false
