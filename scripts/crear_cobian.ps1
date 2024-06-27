@@ -83,6 +83,13 @@ $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 # Ruta de destino
 $destino = Join-Path -Path $solingesPath -ChildPath (Split-Path -Path $FilePath -Leaf)
 
+# Ruta del archivo modificado
+$modificadoDestino = Join-Path $solingesPath "cobian_original.lst"
+# Eliminar el archivo modificado si ya existe antes de copiar y renombrar
+if (Test-Path $modificadoDestino) {
+    Remove-Item -Path $modificadoDestino -Force
+}
+
 # Copiar y renombrar el archivo original si ya existe
 if (Test-Path $destino) {
     Remove-Item -Path $destino -Force
@@ -91,6 +98,8 @@ if (Test-Path $destino) {
 Copy-Item -Path $FilePath -Destination $destino -Force
 Rename-Item -Path $destino -NewName "cobian_original.lst"
 
+
+
 # Guarda el contenido modificado en el archivo
 $contenido | Set-Content $FilePath -Encoding Unicode
 
@@ -98,6 +107,15 @@ $contenido | Set-Content $FilePath -Encoding Unicode
 if (Test-Path $destino) {
     Remove-Item -Path $destino -Force
 }
+
+
+# Ruta del archivo modificado
+$modificadoDestino = Join-Path $solingesPath "cobian_$Emp.lst"
+# Eliminar el archivo modificado si ya existe antes de copiar y renombrar
+if (Test-Path $modificadoDestino) {
+    Remove-Item -Path $modificadoDestino -Force
+}
+
 Copy-Item -Path $FilePath -Destination $destino -Force
 Rename-Item -Path $destino -NewName "cobian_$Emp.lst"
 
