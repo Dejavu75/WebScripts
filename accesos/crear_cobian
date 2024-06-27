@@ -1,8 +1,15 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+# Agregar encabezados para evitar el caché
+$headers = @{
+    "Cache-Control" = "no-cache"
+    "Pragma" = "no-cache"
+    "Expires" = "-1"
+}
+
 # Descargar el script remoto utilizando Invoke-WebRequest
 $scriptUrl = "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts/crear_cobian.ps1"
-$scriptContent = Invoke-WebRequest $scriptUrl -UseBasicParsing | Select-Object -ExpandProperty Content
+$scriptContent = Invoke-WebRequest $scriptUrl -UseBasicParsing -Headers $headers| Select-Object -ExpandProperty Content 
 
 # Ejecutar el script descargado utilizando Invoke-Expression
 Invoke-Expression $scriptContent
