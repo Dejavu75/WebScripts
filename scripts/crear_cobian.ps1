@@ -26,32 +26,38 @@ $searchDirectories = @(
 )
 
 $found = $false
-$systemPath = ""
+$systemPath2 = ""
 
 foreach ($dir in $searchDirectories) {
     if (Test-Path (Join-Path $dir 'version.dbf')) {
-        $systemPath = $dir
+        $systemPath2 = $dir
         $found = $true
         break
     }
 }
 
 if ($found) {
-    $solingesPath = Split-Path $systemPath -Parent
+    $solingesPath2 = Split-Path $systemPath2 -Parent
 } else {
-    $solingesPath = "C:\Servidor\Solinges"
+    $solingesPath2 = "C:\Servidor\Solinges"
 }
 
-$solingesPath = Read-Host "Ingrese el path base ($solingesPath)"
-
+$solingesPath = Read-Host "Ingrese el path base ($solingesPath2)"
+if ($solingesPath -eq "") {
+    $solingesPath = $solingesPath2
+}
 if (-not $found) {
-    $systemPath = Join-Path $solingesPath "System"
+    $systemPath2 = Join-Path $solingesPath "System"
+}
+$systemPath = Read-Host "Ingrese el path de System ($systemPath2)"
+if ($systemPath -eq "") {
+    $systemPath = $systemPath2
 }
 
-$BackupPath = Join-Path $solingesPath "Backups"
-$BackupPath = Read-Host "Ingrese el path del backup ($BackupPath)"
+$BackupPath2 = Join-Path $solingesPath "Backups"
+$BackupPath = Read-Host "Ingrese el path del backup ($BackupPath2)"
 if ($BackupPath -eq "") {
-    $BackupPath = Join-Path $solingesPath "Backups"
+    $BackupPath =$BackupPath2
 }
 
 $Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
