@@ -7,14 +7,7 @@ $DownloadURL = 'https://soporte.solinges.com.ar/cobian.lst'
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
 $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\cobian.lst" } else { "$env:TEMP\cobian.lst" }
 
-try {
-    Write-Host -BackgroundColor Black -ForegroundColor Black .
-    Write-Host -BackgroundColor Black -ForegroundColor Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
-    Write-Host -BackgroundColor Black -ForegroundColor Black .
-}
-catch {
-    <#Do this if a terminating exception happens#>
-}
+Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
 
 $Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
 if ($Emp -eq "") {
