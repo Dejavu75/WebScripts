@@ -1,13 +1,12 @@
 $ErrorActionPreference = "Stop"
 # Enable TLSv1.2 for compatibility with older clients
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-Write-Host 1
+
 $DownloadURL = 'https://soporte.solinges.com.ar/cobian.lst'
-Write-Host 2
+
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
-Write-Host 3
 $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\cobian.lst" } else { "$env:TEMP\cobian.lst" }
-Write-Host 4
+
 try {
     Write-Host -BackgroundColor Black -ForegroundColor Black .
     Write-Host -BackgroundColor Black -ForegroundColor Green Descargando ((Invoke-WebRequest -Uri $DownloadURL -Method Head).Headers."Content-Length"/1024/1024).ToString("N2") MB
@@ -16,9 +15,7 @@ try {
 catch {
     <#Do this if a terminating exception happens#>
 }
-Write-Host 5
-Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
-Write-Host 6
+
 # Define the directories to search for version.dbf
 $searchDirectories = @(
     'c:\Servidor\solinges\system',
@@ -27,7 +24,7 @@ $searchDirectories = @(
     'c:\Sistema\system',
     'c:\Sistema\2000\system'
 )
-Write-Host 7
+
 $found = $false
 $systemPath = ""
 
@@ -38,19 +35,19 @@ foreach ($dir in $searchDirectories) {
         break
     }
 }
-Write-Host 8
-if (-not $found) {
-    $solingesPath = Read-Host "Ingrese el path base (C:\Servidor\Solinges)"
-    if ($solingesPath -eq "") {
-        $solingesPath = "C:\Servidor\Solinges"
-    }
-    $systemPath = Join-Path $solingesPath "System"
-} else {
+
+if ($found) {
     $solingesPath = Split-Path $systemPath -Parent
-    Write-Host "Path base encontrado: $solingesPath"
-    Write-Host "Path system encontrado: $systemPath"
+} else {
+    $solingesPath = "C:\Servidor\Solinges"
 }
-Write-Host 9
+
+$solingesPath = Read-Host "Ingrese el path base ($solingesPath)"
+
+if (-not $found) {
+    $systemPath = Join-Path $solingesPath "System"
+}
+
 $BackupPath = Join-Path $solingesPath "Backups"
 $BackupPath = Read-Host "Ingrese el path del backup ($BackupPath)"
 if ($BackupPath -eq "") {
@@ -79,21 +76,22 @@ $contenido = $contenido -replace $DefaDeposito, $DepositoPath
 # Ruta de destino
 $destino = Join-Path -Path $solingesPath -ChildPath (Split-Path -Path $FilePath -Leaf)
 
+# Copiar y renombrar el archivo original si ya existe
 if (Test-Path $destino) {
-    Rename-Item -Path $destino -NewName ($destino + ".bak")
+    Remove-Item -Path $destino -Force
 }
 
-Copy-Item -Path $FilePath -Destination $destino
+Copy-Item -Path $FilePath -Destination $destino -Force
 Rename-Item -Path $destino -NewName "cobian_original.lst"
 
 # Guarda el contenido modificado en el archivo
 $contenido | Set-Content $FilePath -Encoding Unicode
 
-# Copiar el archivo al destino
+# Copiar y renombrar el archivo modificado si ya existe
 if (Test-Path $destino) {
-    Rename-Item -Path $destino -NewName ($destino + ".bak")
+    Remove-Item -Path $destino -Force
 }
-Copy-Item -Path $FilePath -Destination $destino
+Copy-Item -Path $FilePath -Destination $destino -Force
 Rename-Item -Path $destino -NewName "cobian_$Emp.lst"
 
 Write-Host "Resumen de directorios seteados:"
