@@ -16,6 +16,10 @@ catch {
     <#Do this if a terminating exception happens#>
 }
 
+$Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
+if ($Emp -eq "") {
+    $Emp = "EMP"
+}
 # Define the directories to search for version.dbf
 $searchDirectories = @(
     'c:\Servidor\solinges\system',
@@ -60,10 +64,7 @@ if ($BackupPath -eq "") {
     $BackupPath =$BackupPath2
 }
 
-$Emp = Read-Host "Ingrese el nombre de la empresa para el backup (EMP)"
-if ($Emp -eq "") {
-    $Emp = "EMP"
-}
+
 
 $DepositoPath = Join-Path $BackupPath "GES"
 $DiarioPath = Join-Path $BackupPath $Emp
