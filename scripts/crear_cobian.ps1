@@ -46,7 +46,7 @@ if (-not $found) {
     }
     $systemPath = Join-Path $solingesPath "System"
 } else {
-    Write-Host "Encontrado $solingesPath como directorio base..." 
+    $solingesPath = Split-Path $systemPath -Parent
 }
 Write-Host 9
 $BackupPath = Join-Path $solingesPath "Backups"
