@@ -18,7 +18,7 @@ catch {
 }
 Write-Host 5
 Invoke-WebRequest -Uri $DownloadURL -OutFile $FilePath -UseBasicParsing
-
+Write-Host 6
 # Define the directories to search for version.dbf
 $searchDirectories = @(
     'c:\Servidor\solinges\system',
@@ -27,7 +27,7 @@ $searchDirectories = @(
     'c:\Sistema\system',
     'c:\Sistema\2000\system'
 )
-
+Write-Host 7
 $found = $false
 $systemPath = ""
 
@@ -38,15 +38,17 @@ foreach ($dir in $searchDirectories) {
         break
     }
 }
-
+Write-Host 8
 if (-not $found) {
     $solingesPath = Read-Host "Ingrese el path base (C:\Servidor\Solinges)"
     if ($solingesPath -eq "") {
         $solingesPath = "C:\Servidor\Solinges"
     }
     $systemPath = Join-Path $solingesPath "System"
+} else {
+    Write-Host "Encontrado $solingesPath como directorio base..." 
 }
-
+Write-Host 9
 $BackupPath = Join-Path $solingesPath "Backups"
 $BackupPath = Read-Host "Ingrese el path del backup ($BackupPath)"
 if ($BackupPath -eq "") {
