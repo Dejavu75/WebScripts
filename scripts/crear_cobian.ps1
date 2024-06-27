@@ -39,6 +39,7 @@ foreach ($dir in $searchDirectories) {
 }
 
 if ($found) {
+    Write-Host "Se ha encontrado $systemPath2"
     $solingesPath2 = Split-Path $systemPath2 -Parent
 } else {
     $solingesPath2 = "C:\Servidor\Solinges"
