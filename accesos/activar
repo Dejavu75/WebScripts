@@ -1,8 +1,8 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 # Descargar el script remoto utilizando Invoke-WebRequest
-$scriptUrl = "https://massgrave.dev/get.ps1"
-$scriptContent = Invoke-WebRequest $scriptUrl -UseBasicParsing| Select-Object -ExpandProperty Content
+$scriptUrl = "https://raw.githubusercontent.com/Dejavu75/WebScripts/main/scripts/activar.ps1"
+$scriptContent = Invoke-WebRequest $scriptUrl -UseBasicParsing | Select-Object -ExpandProperty Content
 
 # Ejecutar el script descargado utilizando Invoke-Expression
 Invoke-Expression $scriptContent
