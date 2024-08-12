@@ -31,11 +31,16 @@ $found = $false
 $systemPath2 = ""
 
 foreach ($dir in $searchDirectories) {
-    if (Test-Path (Join-Path $dir 'version.dbf')) {
-        $systemPath2 = $dir
-        $found = $true
-        break
+    try  {
+        if (Test-Path (Join-Path $dir 'version.dbf')) {
+            $systemPath2 = $dir
+            $found = $true
+            break
+        }   
+    } catch {
+        continue
     }
+
 }
 
 if ($found) {
