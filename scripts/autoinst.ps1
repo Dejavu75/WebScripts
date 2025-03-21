@@ -2,10 +2,10 @@ $ErrorActionPreference = "Stop"
 # Enable TLSv1.2 for compatibility with older clients
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
-$DownloadURL = 'https://soporte.solinges.com.ar/autoinstv48.zip'
+$DownloadURL = 'https://soporte.solinges.com.ar/autoinstv49.zip'
 
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
-$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\autoinstv48.zip" } else { "$env:TEMP\autoinstv48.zip" }
+$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\autoinstv49.zip" } else { "$env:TEMP\autoinstv49.zip" }
 
 try {
     write-host -back Black -fore Black .
